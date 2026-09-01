@@ -37,6 +37,16 @@ pnpm dev:mobile
 3. Clínica/hospital organiza unidades, profissionais e agenda.
 4. Paciente escolhe um horário e recebe confirmação; lembretes entram no próximo incremento.
 
+## API do onboarding de paciente
+
+- `POST /v1/patients/onboarding/personal`: cria o perfil e inicia uma sessão autenticada.
+- `GET /v1/patients/me`: retorna o perfil da sessão atual.
+- `PUT /v1/patients/me/preferences`: salva a segunda etapa e conclui o onboarding.
+
+O CPF é validado no cliente e no servidor. O banco armazena somente um hash com pepper para unicidade e os quatro últimos dígitos para identificação. Configure `AUTH_SECRET` e `CPF_PEPPER` com valores longos e diferentes em produção.
+
+O frontend usa `NEXT_PUBLIC_API_URL` para localizar a API e assume `http://localhost:3333` em desenvolvimento.
+
 ## Convenções
 
 - JavaScript com ES modules.
