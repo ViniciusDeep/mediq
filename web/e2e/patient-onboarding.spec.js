@@ -4,10 +4,10 @@ import path from 'node:path';
 const evidenceDir = path.resolve(process.env.EVIDENCE_DIR || 'test-results');
 
 test('paciente conclui o onboarding', async ({ page }) => {
-  await page.route('**/v1/patients/onboarding/personal', (route) => route.fulfill({
+  await page.route('**/api/patients/onboarding/personal', (route) => route.fulfill({
     json: { token: 'evidence-token', patient: { id: 'patient-evidence' } },
   }));
-  await page.route('**/v1/patients/me/preferences', (route) => route.fulfill({
+  await page.route('**/api/patients/me/preferences', (route) => route.fulfill({
     json: { patient: { onboardingCompleted: true } },
   }));
 
