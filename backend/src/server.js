@@ -7,6 +7,12 @@ await app.register(cors, {
   origin: process.env.WEB_ORIGIN ?? 'http://localhost:3000'
 });
 
+app.get('/', async () => ({
+  name: 'Mediq API',
+  status: 'online',
+  health: '/health'
+}));
+
 app.get('/health', async () => ({
   status: 'ok',
   service: 'mediq-api'
