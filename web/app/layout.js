@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Mediq',
-  description: 'Agendamento médico simples e confiável.'
+  title: 'Dados pessoais | Mediq',
+  description: 'Complete seus dados pessoais para configurar sua conta Mediq.'
 };
 
 export default function RootLayout({ children }) {
