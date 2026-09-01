@@ -1,7 +1,5 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3333';
-
 async function request(path, options = {}) {
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(path, {
     ...options,
     headers: { 'content-type': 'application/json', ...options.headers }
   });
@@ -16,15 +14,15 @@ async function request(path, options = {}) {
 }
 
 export function savePersonalData(payload) {
-  return request('/v1/patients/onboarding/personal', { method: 'POST', body: JSON.stringify(payload) });
+  return request('/api/patients/onboarding/personal', { method: 'POST', body: JSON.stringify(payload) });
 }
 
 export function loadPatient(token) {
-  return request('/v1/patients/me', { headers: { authorization: `Bearer ${token}` } });
+  return request('/api/patients/me', { headers: { authorization: `Bearer ${token}` } });
 }
 
 export function savePatientPreferences(token, payload) {
-  return request('/v1/patients/me/preferences', {
+  return request('/api/patients/me/preferences', {
     method: 'PUT',
     headers: { authorization: `Bearer ${token}` },
     body: JSON.stringify(payload)

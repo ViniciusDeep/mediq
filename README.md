@@ -45,7 +45,23 @@ pnpm dev:mobile
 
 O CPF é validado no cliente e no servidor. O banco armazena somente um hash com pepper para unicidade e os quatro últimos dígitos para identificação. Configure `AUTH_SECRET` e `CPF_PEPPER` com valores longos e diferentes em produção.
 
-O frontend usa `NEXT_PUBLIC_API_URL` para localizar a API e assume `http://localhost:3333` em desenvolvimento.
+O frontend usa um proxy interno em `/api/patients/*`, evitando expor a API diretamente ao navegador e eliminando a necessidade de CORS entre os dois serviços. O proxy usa `http://localhost:3333` em desenvolvimento e `https://mediq-prod.up.railway.app` em produção. Defina `MEDIQ_API_URL` para sobrescrever o destino no servidor.
+
+## Deploy do portal web na Railway
+
+Crie um segundo serviço Railway a partir deste repositório, mantendo a raiz do monorepo em `/`. Configure o serviço com:
+
+- Build command: `pnpm --filter @mediq/web build`
+- Start command: `pnpm --filter @mediq/web start`
+- Healthcheck path: `/api/health`
+
+O build e o start do Next.js ficam separados do serviço da API. A Railway também consegue detectar automaticamente o pacote `@mediq/web` ao importar este monorepo JavaScript.
+
+Variável opcional do serviço web:
+
+```env
+MEDIQ_API_URL=https://mediq-prod.up.railway.app
+```
 
 ## Convenções
 
