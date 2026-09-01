@@ -7,6 +7,7 @@
     "dev:backend": "pnpm --filter @mediq/backend dev",
     "dev:web": "pnpm --filter @mediq/web dev",
     "dev:mobile": "pnpm --filter @mediq/mobile start",
+    "evidence:web": "./scripts/pr-evidence.sh",
     "start": "pnpm --filter @mediq/backend start",
     "test": "pnpm -r --if-present test",
     "lint": "pnpm -r --if-present lint"
