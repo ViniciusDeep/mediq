@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Mediq",
+    "slug": "mediq",
+    "scheme": "mediq",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light"
+  }
+}

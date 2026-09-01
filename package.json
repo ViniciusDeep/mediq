@@ -1,0 +1,16 @@
+{
+  "name": "mediq",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.7.1",
+  "scripts": {
+    "dev:backend": "pnpm --filter @mediq/backend dev",
+    "dev:web": "pnpm --filter @mediq/web dev",
+    "dev:mobile": "pnpm --filter @mediq/mobile start",
+    "test": "pnpm -r --if-present test",
+    "lint": "pnpm -r --if-present lint"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
